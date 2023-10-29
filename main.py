@@ -17,7 +17,7 @@ from data_to_vedio import *
 # 5、将第3步的语音和第4步的图片合成视频。
 
 
-def xunhuan_list(path):
+def iterate_list(path):
     filename = [ os.path.join(path, item) for item in os.listdir(path)]
     result =[]
     for item in filename :
@@ -28,11 +28,11 @@ def xunhuan_list(path):
     return result
 
 
-def batch_merge(ource_file_path):
+def batch_merge(source_file_path):
     #切割源文件，句号分割语料，形成新的文件。
-    csv_save_path = split_data_process(ource_file_path)
+    csv_save_path = split_data_process(source_file_path)
     print("数据切割完成")
-    name_list = xunhuan_list(csv_save_path)
+    name_list = iterate_list(csv_save_path)
     for item in name_list:
         #利用chatglm生成提示词，prompt negative。
         data_promt_path = load_data_text(item)
